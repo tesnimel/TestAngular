@@ -1,0 +1,38 @@
+<ng-template #spin>
+  <mat-spinner></mat-spinner>
+</ng-template>
+<mat-card >
+  <mat-card-content>
+  <button (click)="onClickReturn()" mat-fab >Return</button>
+  </mat-card-content>
+    <mat-card-content>
+    <h4>Filter by categories</h4>
+    <mat-form-field>
+      <mat-label>Select Categories</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let categorie of listCategories" [value]="categorie"
+                    (onSelectionChange)="onChangeFilter($event ,categorie)">
+          {{categorie}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+</mat-card-content>
+</mat-card>
+<br>
+<br>
+<ng-container *ngIf="listBooks ; else spin">
+<mat-card class="example-card" *ngFor="let book of listBooks.items"
+          (click)="openDialog(book.volumeInfo.industryIdentifiers[0].identifier)">
+  <mat-card-header>
+    <mat-card-title>{{book.volumeInfo.title}}</mat-card-title>
+    <mat-card-subtitle>{{book.volumeInfo.authors}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src={{book.volumeInfo.imageLinks.smallThumbnail}} alt="Photo of a book">
+  <mat-card-content>
+    <p>
+      {{book.volumeInfo.description}}
+    </p>
+  </mat-card-content>
+</mat-card>
+</ng-container>

@@ -1,0 +1,11 @@
+<form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="searchForm">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="key words" formControlName="keywords">
+  </mat-form-field>
+  <ng-container *ngIf="searchForm.controls['keywords'].invalid && submitted">
+    <p style="color: red;" *ngIf="searchForm.controls['keywords'].errors">
+      please add keys to search!!
+    </p>
+  </ng-container>
+  <button mat-raised-button color="accent" (click)="onClick()">Accent</button>
+</form>

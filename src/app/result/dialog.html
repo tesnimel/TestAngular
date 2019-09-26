@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>dadazdaz</title>
+</head>
+<body>
+<div *ngIf="data.items;  else nodata">
+  <h2> {{data.items[0].volumeInfo.title}} </h2>
+  <ng-container *ngIf="data.items[0].volumeInfo.description">
+    <h4>Description</h4>
+    <p>{{data.items[0].volumeInfo.description}}</p>
+  </ng-container>
+  <hr/>
+  <ng-container *ngIf="data.items[0].volumeInfo.categories">
+    <h4>Category</h4>
+    <p>{{data.items[0].volumeInfo.categories}}</p>
+  </ng-container>
+  <ng-container *ngIf="data.items[0].volumeInfo.authors">
+    <h4>Author</h4>
+    <p>{{data.items[0].volumeInfo.authors}}</p>
+  </ng-container>
+  <ng-container *ngIf="data.items[0].volumeInfo.publisher">
+    <h4>Publisher</h4>
+    <p>{{data.items[0].volumeInfo.publisher}}</p>
+  </ng-container>
+  <ng-container *ngIf="data.items[0].volumeInfo.publishedDate">
+    <h4>Published date</h4>
+    <p>{{data.items[0].volumeInfo.publishedDate}}</p>
+  </ng-container>
+  <ng-container *ngIf="data.items[0].volumeInfo.language">
+    <h4>Language</h4>
+    <p>{{data.items[0].volumeInfo.language}}</p>
+  </ng-container>
+  <hr/>
+</div>
+<ng-template #nodata>
+  <span style="color: red"> No data Available for this book in google books API !!!!</span>
+</ng-template>
+</body>
+</html>
